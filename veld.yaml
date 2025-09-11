@@ -24,11 +24,22 @@ x-veld:
         optional:
 
 services:
-  veld:
+  veld_wordembeddings_germanet_evaluation:
     build: .
-    command: python /veld/code/REPLACE.py
+    ports:
+      - 8888:8888
     volumes:
       - ./src/:/veld/code/
     environment:
-      REPLACE: 
+      POSTGRES_USER: null
+      POSTGRES_PASSWORD: null
+      POSTGRES_DB: null
+      POSTGRES_HOST: null
+      POSTGRES_PORT: null
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge
 
